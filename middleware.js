@@ -8,7 +8,7 @@ const MAXMIND_DB_FILENAME = 'GeoLite2-Country.mmdb'; */
 export async function middleware(req) {
   const res = NextResponse.next();
   //check user country with ip
-  console.log(req);
+  /*   console.log(req); */
 
   return res;
 }

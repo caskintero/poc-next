@@ -8,7 +8,7 @@ export const getServerSideProps = async ({ req }) => {
       ? forwarded.split(/, /)[0]
       : req.socket.remoteAddress;
 
-  console.log(ip);
+  console.log("==============IP===============", ip);
 
   return {
     props: { ip },
