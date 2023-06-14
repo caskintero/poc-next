@@ -1,5 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import { useEffect } from "react";
+import axios from "axios";
 export const getServerSideProps = async ({ req }) => {
   const forwarded = req.headers["x-forwarded-for"];
 
@@ -15,6 +17,10 @@ export const getServerSideProps = async ({ req }) => {
   };
 };
 export default function Home() {
+  useEffect(async () => {
+    await axios.get("api/test");
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
