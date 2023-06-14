@@ -1,6 +1,19 @@
-import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+export const getServerSideProps = async ({ req }) => {
+  const forwarded = req.headers["x-forwarded-for"];
 
+  const ip =
+    typeof forwarded === "string"
+      ? forwarded.split(/, /)[0]
+      : req.socket.remoteAddress;
+
+  console.log(ip);
+
+  return {
+    props: { ip },
+  };
+};
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -55,7 +68,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
         </a>
       </footer>
@@ -111,5 +124,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }
